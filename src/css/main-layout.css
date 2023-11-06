@@ -1,71 +1,60 @@
 :root {
     --color-blue: #25476a;
-    --color-blue-1: #25476a;
+    --color-blue-1: #294d72;
     --color-blue-2: #25476a;
     --color-light: #ffffff;
     --color-light-gray: #edf1f6;
+    --color-orange: #ff7a38;
     --color-green: #0b9c4b;
+    --color-pink: #ffa9b3;
 }
 
 .m-layout {
     color: black;
     display: flex;
-    flex-direction: column;
-    background-color: var(--color-blue);
     height: 100vh;
-}
-
-/*Header*/
-.m-header {
-    width: 100%;
-    background-color: var(--color-blue);
-    color: var(--color-light);
-    font-weight: 500;
-    /*display*/
-    display: flex;
-}
-
-.m-logo-container {
-    width: 230px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 60px;
-}
-
-.m-logo {
-    max-height: 30px;
-}
-
-.m-header-menu{
-    display: flex;
-    align-items: center;
-    gap: 1100px;
-}
-/*Body*/
-.m-body {
-    display: flex;
-    color: var(--color-light);
-    font-weight: 400;
-    background-color: var(--color-blue);
-    height: 100%;
 }
 
 /*Menu*/
 .m-menu {
-    width: 220px;
-    padding: 20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: var(--color-light);
+    width: 250px;
+    background-color: var(--color-blue);
+    /*display: none;*/
+    height: 100vh;
+    transition: all 0.8s ease;
+    overflow: hidden;
+}
+.m-menu-slide-in{
+    transform: translateX(0);
+    opacity: 1;
+}
+.m-menu-slide-out{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+
+.m-menu-logo {
+    display: flex;
+    justify-content: center;
+    color: var(--color-light);
+    background-color: var(--color-blue);
+    height: 10%;
+    align-items: center;
 }
 
 .m-menu-item {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     display: flex;
+    background-color: var(--color-light);
     justify-content: start;
     flex-direction: column;
     gap: 10px;
     max-width: 220px;
+    height: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .m-menu-text {
@@ -82,42 +71,85 @@
 .m-menu-text:hover {
     color: white;
     background-color: var(--color-blue);
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: 500;
 }
 
 .m-menu-text.default {
     color: white;
     background-color: var(--color-blue);
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: 500;
 }
 
 /*Content*/
 .m-content-container {
     width: 100%;
+    height: 100vh;
 }
 
-.m-content-header {
-    border-bottom: 10px;
+/*Header*/
+.m-header {
     background-color: var(--color-blue);
-    height: 20%;
-    border-radius: 10px;
+    color: var(--color-light);
+    font-weight: 500;
+    height: 10%;
+    /*display*/
+    display: flex;
+}
+
+.m-header-menu {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/*Body*/
+.m-content {
+    color: black;
+    background-color: var(--color-light-gray);
+    /* display*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+}
+
+.m-body-header {
+    color: var(--color-light-gray);
+    width: 100%;
+    background-color: var(--color-blue);
+    height: 150px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
     /* display*/
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 30px;
+
 }
 
-.m-content {
-    width: 100%;
-    color: black;
-    background-color: var(--color-light-gray);
-    height: 80%;
-    /* display*/
+.m-body {
     display: flex;
+    color: var(--color-blue);
+    font-weight: 400;
+    background-color: var(--color-light-gray);
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
 
 }
+
+
+/*Body*/
+
+
+/*RESPONSIVE*/
+
+
+/*CSS SUPPORT*/
+
+
+
