@@ -3,7 +3,14 @@ import {Bars3Icon, ArrowRightOnRectangleIcon} from '@heroicons/react/20/solid'
 
 export default function Header(props) {
     const handleClick = () => {
-        props.setOpenMenu(!props.openMenu);
+       let menu = document.body.querySelector(`.m-menu`);
+        if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            menu.classList.add("show");
+        } else {
+            menu.classList.remove("show");
+            menu.classList.add("hidden");
+        }
     };
 
     return (<>
