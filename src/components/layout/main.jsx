@@ -4,17 +4,31 @@ import Menu from "./menu.jsx";
 import Dashboard from "../page/Dashboard/dashboard.jsx";
 import {useState} from "react";
 import User from "../page/User/user.jsx";
-import {Route, Routes} from "react-router-dom";
+import {Link, Route, Routes} from "react-router-dom";
 import Function from "../page/SystemFunction/function.jsx";
+import Province from "../page/Province/province.jsx";
 
 function MainLayout() {
     const [openMenu, setOpenMenu] = useState(true);
 
-    const routerList = [{
-        path: "/user", component: User
-    }, {
-        path: "/dashboard", component: Dashboard
-    }]
+    const [routerList, setRouterList] = useState([
+        {
+            path: "/user",
+            component: <User/>
+        },
+        {
+            path: "/dashboard",
+            component: <Dashboard/>
+        },
+        {
+            path: "/function",
+            component: <Function/>
+        },
+        {
+            path: "/province",
+            component: <Province/>
+        }
+    ])
 
     return (<div className="m-layout">
         <div className="m-menu">
@@ -26,9 +40,9 @@ function MainLayout() {
             </div>
             <div className="m-content">
                 <Routes>
-                    <Route path="/user" element={<User/>}></Route>
-                    <Route path="/function" element={<Function/>}></Route>
-                    <Route path="/*" element={<Dashboard/>}></Route>
+                    {routerList.map(item => (
+                        <Route path={item.path} element={item.component}></Route>
+                    ))}
                 </Routes>
             </div>
         </div>

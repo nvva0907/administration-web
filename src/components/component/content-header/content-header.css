@@ -1,0 +1,7 @@
+.m-body-header-breadcrumbs {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}

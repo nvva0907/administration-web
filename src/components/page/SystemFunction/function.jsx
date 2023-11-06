@@ -1,12 +1,9 @@
+import {ContentHeader} from "../../component/content-header/content-header.jsx";
+
 export default function Function() {
     return (
         <>
-            <div className="m-body-header">
-                <div style={{marginLeft:"40px"}}>
-                    <h1 style={{marginBottom:"10px"}} >Chức năng hệ thống</h1>
-                    {/*<p>Welcome back to the Dashboard.</p>*/}
-                </div>
-            </div>
+            <ContentHeader label="Chức năng hệ thống" scr="Chức năng hệ thống"></ContentHeader>
             <div className="m-body">
                 <h1>Function</h1>
             </div>

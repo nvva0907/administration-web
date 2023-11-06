@@ -1,11 +1,8 @@
+import {ContentHeader} from "../../component/content-header/content-header.jsx";
+
 export default function Dashboard() {
     return (<>
-        <div className="m-body-header">
-            <div style={{marginLeft: "40px"}}>
-                <h1 style={{marginBottom: "10px"}}>Dashboard</h1>
-                <p>Welcome back to the Dashboard.</p>
-            </div>
-        </div>
+        <ContentHeader label="Dashboard" scr="Dashboard"></ContentHeader>
         <div className="m-body">
             <h1>Dashboard</h1>
         </div>

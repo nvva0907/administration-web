@@ -24,14 +24,14 @@
 
 .m-menu.show {
     animation-name: menuShow;
-    animation-duration: 0.5s;
+    animation-duration: 0.6s;
     margin-left: 0;
 }
 
 .m-menu.hidden {
     margin-left: calc(var(--menu-width) * -1);
     animation-name: menuHide;
-    animation-duration: 0.5s;
+    animation-duration: 0.6s;
 }
 
 @keyframes menuHide {
@@ -139,9 +139,8 @@
     color: var(--color-light-gray);
     width: 100%;
     background-color: var(--color-blue);
-    height: 150px;
+    height: 120px;
     border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
     /* display*/
     display: flex;
     flex-direction: column;
@@ -179,20 +178,28 @@
     .m-body-header {
         margin-top: -210px;
         animation-name: bodyHeaderHide;
-        animation-duration: 0.5s;
+        animation-duration: 1s;
         position: absolute;
+        border-bottom-left-radius: 1px;
+        border-bottom-right-radius: 1px;
     }
     @keyframes bodyHeaderHide {
         0% {
-            margin-top: 0;
+            margin-top: -100px;
+            opacity: 0.5;
         }
         100% {
             margin-top: -210px;
         }
     }
 }
-@media screen and (min-resolution: 140dpi) {
+@media screen and (min-resolution: 150dpi) {
     .m-menu {
+        margin-left: -250px;
+        animation-name: menuHide;
+        animation-duration: 0.5s ;
+    }
+    .m-menu.show {
         margin-left: -250px;
         animation-name: menuHide;
         animation-duration: 0.5s ;

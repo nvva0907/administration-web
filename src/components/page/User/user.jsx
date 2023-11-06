@@ -1,4 +1,5 @@
 import {getListAllUser} from "./user-api.jsx";
+import {ContentHeader} from "../../component/content-header/content-header.jsx";
 
 export default function User() {
 
@@ -10,11 +11,7 @@ export default function User() {
     }
 
     return (<>
-        <div className="m-body-header">
-            <div style={{marginLeft: "40px"}}>
-                <h1 style={{marginBottom: "10px"}}>Người dùng hệ thống</h1>
-            </div>
-        </div>
+        <ContentHeader label="Người dùng hệ thống" scr="Quản lý người dùng"></ContentHeader>
         <div className="m-body">
             <h1 onClick={handleClick}>User</h1>
         </div>
