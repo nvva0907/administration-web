@@ -5,7 +5,7 @@ import {Bars3Icon, ArrowRightOnRectangleIcon} from '@heroicons/react/20/solid'
 export default function Header() {
     return (<>
         <div className="m-logo-container">
-            <img src={logo} className="m-logo" alt="logo"/>
+            {/*<img src={logo} className="m-logo" alt="logo"/>*/}
             <p>Administrator</p>
         </div>
         <div className="m-header-menu">

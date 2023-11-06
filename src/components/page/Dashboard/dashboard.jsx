@@ -1,4 +1,14 @@
+import {getListAllUser} from "./dashboard-api.jsx";
+
 export default function Dashboard() {
+
+    const handleClick = async () =>{
+        const response = await getListAllUser(1,10,null);
+        if(response != null){
+            console.log(response)
+            alert("Call api success!");
+        }
+    }
     return (
         <>
             <div className="m-content-header">
@@ -6,7 +16,7 @@ export default function Dashboard() {
                 <p>Welcome back to the Dashboard.</p>
             </div>
             <div className="m-content">
-                <h1>Content</h1>
+                <button onClick={handleClick}>TEST AXIOS</button>
             </div>
         </>
     )
