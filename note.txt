@@ -1,3 +1,13 @@
 md:flex-row : Đối với medium display thì sẽ là flex-row - Responsive
 shrink-0 : phần tử ko thể bị co lại - Tính chất co lại
 w-full = width : 100%
+
+flex = display : flex
+text-black = --tw-text-opacity: 1; color: rgba(0, 0, 0, var(--tw-text-opacity));
+h-screen = height: 100vh
+justify-center = justify-content: center
+items-center = align-items: center
+box-border = box-sizing: border-box
+rounded-t-xl = border-top-left-radius: 10px;
+               border-top-right-radius: 10px;
+rounded-md = border-radius: 6px;

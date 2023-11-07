@@ -12,7 +12,7 @@ export default function User() {
 
     return (<>
         <ContentHeader label="Người dùng hệ thống" scr="Quản lý người dùng"></ContentHeader>
-        <div className="m-body">
+        <div className="flex color-blue font-medium bg-light-gray w-full h-full justify-center items-center">
             <h1 onClick={handleClick}>User</h1>
         </div>
     </>)

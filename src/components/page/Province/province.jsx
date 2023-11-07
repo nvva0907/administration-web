@@ -5,8 +5,8 @@ export default function Province() {
     return (
         <>
             <ContentHeader label="Tỉnh thành" scr="Danh sách tỉnh thành"></ContentHeader>
-            <div className="m-body">
-                <Table></Table>
+            <div className="flex color-blue font-medium bg-light-gray w-full h-full justify-center items-center">
+                {/*<Table></Table>*/}
             </div>
         </>
     )

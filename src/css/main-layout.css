@@ -7,179 +7,58 @@
     --color-orange: #ff7a38;
     --color-green: #0b9c4b;
     --color-pink: #ffa9b3;
-
     --menu-width: 250px;
 }
 
-.m-layout {
-    color: black;
-    display: flex;
-}
-
-/*Menu*/
-.m-menu {
+.bg-blue {
     background-color: var(--color-blue);
-    height: 100vh;
 }
 
-.m-menu.show {
-    animation-name: menuShow;
-    animation-duration: 0.5s;
-    margin-left: 0;
+.color-blue {
+    color: var(--color-blue);
 }
 
-.m-menu.hidden {
-    margin-left: calc(var(--menu-width) * -1);
-    animation-name: menuHide;
-    animation-duration: 0.5s;
+.color-white {
+    color: white;
 }
 
-@keyframes menuHide {
-    0% {
-        margin-left: 0;
-    }
-    100% {
-        margin-left: calc(var(--menu-width) * -1);
-    }
-}
-
-@keyframes menuShow {
-    0% {
-        margin-left: calc(var(--menu-width) * -1);
-    }
-    100% {
-        margin-left: 0;
-    }
-}
-
-.m-menu-logo {
-    display: flex;
-    justify-content: center;
-    color: var(--color-light);
-    background-color: var(--color-blue);
+.h-7-100 {
     height: 7%;
-    align-items: center;
 }
 
-.m-menu-item {
-    width: var(--menu-width);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
+.h-93-100 {
+    height: 93%;
+}
+
+.w-250 {
+    width: 250px;
+}
+
+.bg-light {
     background-color: var(--color-light);
-    /*justify-content: start;*/
-    flex-direction: column;
-    gap: 10px;
-    height: 93%;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box;
 }
 
-.m-menu-text {
-    font-size: small;
-    font-weight: 700;
-    color: var(--color-blue);
-    height: 30px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-}
-
-.m-menu-text:hover {
+.menu-hover:hover {
     color: white;
     background-color: var(--color-blue);
     border-radius: 5px;
     font-weight: 500;
 }
 
-.m-menu-text.default {
-    color: white;
-    background-color: var(--color-blue);
-    border-radius: 5px;
-    font-weight: 500;
-}
-
-/*Content*/
-.m-content-container {
-    width: 100%;
-    height: 100vh;
-}
-
-/*Header*/
-.m-header {
-    background-color: var(--color-blue);
-    color: var(--color-light);
-    font-weight: 500;
-    height: 7%;
-    /*display*/
-    display: flex;
-}
-
-.m-header-menu {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-}
-
-/*Body*/
-.m-content {
-    color: black;
-    background-color: var(--color-light-gray);
-    /* display*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 93%;
-}
-
-.m-body-header {
-    color: var(--color-light-gray);
-    width: 100%;
-    background-color: var(--color-blue);
-    height: 120px;
+.rounded-bl-40 {
     border-bottom-left-radius: 40px;
-    /* display*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
 }
 
-.m-body {
-    display: flex;
-    color: var(--color-blue);
-    font-weight: 400;
+.bg-light-gray {
     background-color: var(--color-light-gray);
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-
 }
 
 /*RESPONSIVE*/
 @media screen and (min-resolution: 192dpi) {
-    .m-body-header {
-        margin-top: -210px;
-        animation-name: bodyHeaderHide;
-        animation-duration: 1s;
-        position: absolute;
-        border-bottom-left-radius: 1px;
-        border-bottom-right-radius: 1px;
-    }
-    @keyframes bodyHeaderHide {
-        0% {
-            margin-top: -100px;
-            opacity: 0.5;
-        }
-        100% {
-            margin-top: -210px;
-        }
-    }
+
 }
-@media screen and (min-resolution : 140dpi) {
+
+@media screen and (min-resolution: 140dpi) {
     .m-body-header {
         margin-top: -210px;
         animation-name: bodyHeaderHide;
@@ -188,6 +67,7 @@
         border-bottom-left-radius: 1px;
         border-bottom-right-radius: 1px;
     }
+
     @keyframes bodyHeaderHide {
         0% {
             margin-top: -100px;
@@ -200,19 +80,23 @@
     .m-menu {
         margin-left: -250px;
         animation-name: menuHide;
-        animation-duration: 0.5s ;
+        animation-duration: 0.5s;
     }
-    /*.m-menu.show {*/
-    /*    margin-left: -250px;*/
-    /*    animation-name: menuHide;*/
-    /*    animation-duration: 0.5s ;*/
-    /*}*/
+
     @keyframes menuHide {
         0% {
-            margin-left: 0 ;
+            margin-left: 0;
         }
         100% {
-            margin-left: -250px ;
+            margin-left: -250px;
+        }
+    }
+    @keyframes menuShow {
+        0% {
+            margin-left: 0;
+        }
+        100% {
+            margin-left: -250px;
         }
     }
 }

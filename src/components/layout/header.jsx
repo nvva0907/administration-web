@@ -14,7 +14,7 @@ export default function Header(props) {
     };
 
     return (<>
-        <div className="m-header-menu">
+        <div className="flex items-center w-full justify-between">
             <div style={{marginLeft:"20px"}} onClick={handleClick}><Bars3Icon width={24} style={{cursor: "pointer"}}/></div>
             <div style={{marginRight:"20px"}}>
                 <ArrowRightOnRectangleIcon width={24} style={{cursor: "pointer"}}/>
