@@ -3,8 +3,15 @@
     height: 90%;
     margin: 20px 20px 20px 20px;
     border: solid 2px var(--color-blue);
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.green-bg{
+    background-color: #0b9c4b;
+}
+
+.blue-bg{
+    background-color: #294d72;
 }

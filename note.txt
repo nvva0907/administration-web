@@ -1,0 +1,3 @@
+md:flex-row : Đối với medium display thì sẽ là flex-row - Responsive
+shrink-0 : phần tử ko thể bị co lại - Tính chất co lại
+w-full = width : 100%

@@ -21,6 +21,10 @@ function MainLayout() {
             component: <Dashboard/>
         },
         {
+            path: "/",
+            component: <Dashboard/>
+        },
+        {
             path: "/function",
             component: <Function/>
         },

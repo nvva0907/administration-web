@@ -24,14 +24,14 @@
 
 .m-menu.show {
     animation-name: menuShow;
-    animation-duration: 0.6s;
+    animation-duration: 0.5s;
     margin-left: 0;
 }
 
 .m-menu.hidden {
     margin-left: calc(var(--menu-width) * -1);
     animation-name: menuHide;
-    animation-duration: 0.6s;
+    animation-duration: 0.5s;
 }
 
 @keyframes menuHide {
@@ -57,7 +57,7 @@
     justify-content: center;
     color: var(--color-light);
     background-color: var(--color-blue);
-    height: 10%;
+    height: 7%;
     align-items: center;
 }
 
@@ -67,10 +67,10 @@
     border-top-right-radius: 10px;
     display: flex;
     background-color: var(--color-light);
-    justify-content: start;
+    /*justify-content: start;*/
     flex-direction: column;
     gap: 10px;
-    height: 90%;
+    height: 93%;
     padding-left: 20px;
     padding-right: 20px;
     box-sizing: border-box;
@@ -82,7 +82,6 @@
     color: var(--color-blue);
     height: 30px;
     display: flex;
-    justify-content: start;
     align-items: center;
     padding-left: 10px;
 }
@@ -112,7 +111,7 @@
     background-color: var(--color-blue);
     color: var(--color-light);
     font-weight: 500;
-    height: 10%;
+    height: 7%;
     /*display*/
     display: flex;
 }
@@ -132,7 +131,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90%;
+    height: 93%;
 }
 
 .m-body-header {
@@ -162,19 +161,6 @@
 
 /*RESPONSIVE*/
 @media screen and (min-resolution: 192dpi) {
-    .m-menu {
-        margin-left: -250px;
-        animation-name: menuHide;
-        animation-duration: 0.5s;
-    }
-    @keyframes menuHide {
-        0% {
-            margin-left: 0;
-        }
-        100% {
-            margin-left: -250px;
-        }
-    }
     .m-body-header {
         margin-top: -210px;
         animation-name: bodyHeaderHide;
@@ -193,17 +179,34 @@
         }
     }
 }
-@media screen and (min-resolution: 150dpi) {
+@media screen and (min-resolution : 140dpi) {
+    .m-body-header {
+        margin-top: -210px;
+        animation-name: bodyHeaderHide;
+        animation-duration: 1s;
+        position: absolute;
+        border-bottom-left-radius: 1px;
+        border-bottom-right-radius: 1px;
+    }
+    @keyframes bodyHeaderHide {
+        0% {
+            margin-top: -100px;
+            opacity: 0.5;
+        }
+        100% {
+            margin-top: -210px;
+        }
+    }
     .m-menu {
         margin-left: -250px;
         animation-name: menuHide;
         animation-duration: 0.5s ;
     }
-    .m-menu.show {
-        margin-left: -250px;
-        animation-name: menuHide;
-        animation-duration: 0.5s ;
-    }
+    /*.m-menu.show {*/
+    /*    margin-left: -250px;*/
+    /*    animation-name: menuHide;*/
+    /*    animation-duration: 0.5s ;*/
+    /*}*/
     @keyframes menuHide {
         0% {
             margin-left: 0 ;
