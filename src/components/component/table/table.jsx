@@ -1,183 +1,133 @@
-import "./table.css"
-import {PencilIcon} from "@heroicons/react/24/solid";
+import {PencilIcon} from "@heroicons/react/20/solid";
 import {
     ArrowDownTrayIcon, ArrowUpTrayIcon,
 } from "@heroicons/react/24/outline";
 import {
-    Card, CardHeader, Typography, Button, CardBody, Chip, CardFooter, Avatar, IconButton, Tooltip, Input,
+    Card, CardHeader, Typography, Button, CardBody, CardFooter, IconButton, Tooltip,
 } from "@material-tailwind/react";
-import InputText from "../Form/input-text.jsx";
-
-const TABLE_HEAD = ["Transaction", "Amount", "Date", "Status", "Account", ""];
+import InputText from "../form/input-text.jsx";
+import Status from "../form/status.jsx";
 
 
 export default function Table(props) {
-    return (
-        <Card className="h-full w-full flex">
+    return (<Card className="h-full w-full flex">
 
 
-            <CardHeader floated={false} shadow={false}>
-                    <div className="flex w-full justify-between h-20">
-                        <div className="bg-blue-50 w-4/5 pl-5">
-                            <InputText></InputText>
-                        </div>
-                        <div className="flex justify-end w-1/5 bg-blue-50 items-center gap-4 text-sm pr-5">
-                            <div className="flex items-center gap-2 cursor-pointer">
-                                <ArrowUpTrayIcon strokeWidth={2} className="h-4 w-4"/>
-                                <b>Upload</b>
-                            </div>
-                            <div className="flex items-center gap-2 cursor-pointer">
-                                <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4"/>
-                                <b>Export</b>
-                            </div>
-                        </div>
+        <CardHeader floated={false} shadow={false}>
+            <div className="flex w-full justify-between h-20 bg-light-gray-1">
+                <div className="w-4/5 pl-5">
+                    <InputText></InputText>
+                </div>
+                <div className="flex justify-end w-1/5  items-center gap-4 text-sm pr-5">
+                    <div className="flex items-center gap-2 cursor-pointer">
+                        <ArrowUpTrayIcon strokeWidth={2} className="h-4 w-4"/>
+                        <b>Upload</b>
                     </div>
-            </CardHeader>
+                    <div className="flex items-center gap-2 cursor-pointer">
+                        <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4"/>
+                        <b>Export</b>
+                    </div>
+                </div>
+            </div>
+        </CardHeader>
 
 
-            <CardBody className="">
-                <table className="w-full min-w-max table-auto text-left overflow-scroll">
-                    <thead>
-                    <tr>
-                        {props.header.map((head) => (<th
-                            key={head}
-                            className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
-                        >
+        <CardBody>
+            <table className="w-full min-w-max table-auto text-left overflow-scroll">
+                <thead>
+                <tr>
+                    {props.header.map((head, index) => (
+                        <th key={index} className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
                             <Typography
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal leading-none opacity-70"
                             >
-                                {head}
+                                {head.label}
                             </Typography>
                         </th>))}
+                </tr>
+                </thead>
+
+                <tbody>
+                {props.data.map((record, recordIndex) => (
+                    <tr key={recordIndex}>
+                        {props.header.map((head, headerIndex) => (
+                            <td className="p-2 border-b border-blue-gray-50 flex-row text-start" key={headerIndex}>
+                                <Typography
+                                    variant="small"
+                                    color="blue-gray"
+                                    className="font-normal"
+                                >
+                                    {
+                                        (() => {
+                                            if (head.field) {
+                                                if (head.field === "key") {
+                                                    return recordIndex + 1;
+                                                }
+                                                if (head.field === "status") {
+                                                    if (record[head.field]) {
+                                                        return <Status status={record[head.field]}></Status>
+                                                    } else {
+                                                        return '';
+                                                    }
+                                                } else if (head.field === "") {
+                                                    return '';
+                                                } else {
+                                                    return record[head.field] || '';
+                                                }
+                                            } else {
+                                                return '';
+                                            }
+                                        })()
+                                    }
+                                </Typography>
+                            </td>
+
+                        ))}
+                        <td className="p-2 border-b border-blue-gray-50">
+                            <Tooltip content="Edit User">
+                                <IconButton variant="text">
+                                    <PencilIcon className="h-4 w-4"/>
+                                </IconButton>
+                            </Tooltip>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {props.data.map(({
-                                         img, name, amount, date, status, account, accountNumber, expiry,
-                                     }, index,) => {
-                        const isLast = index === props.data.length - 1;
-                        const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
+                ))}
+                </tbody>
+            </table>
+        </CardBody>
 
-                        return (<tr key={name}>
-                            <td className={classes}>
-                                <div className="flex items-center gap-3">
-                                    <Avatar
-                                        src={img}
-                                        alt={name}
-                                        size="md"
-                                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
-                                    />
-                                    <Typography
-                                        variant="small"
-                                        color="blue-gray"
-                                        className="font-bold"
-                                    >
-                                        {name}
-                                    </Typography>
-                                </div>
-                            </td>
-                            <td className={classes}>
-                                <Typography
-                                    variant="small"
-                                    color="blue-gray"
-                                    className="font-normal"
-                                >
-                                    {amount}
-                                </Typography>
-                            </td>
-                            <td className={classes}>
-                                <Typography
-                                    variant="small"
-                                    color="blue-gray"
-                                    className="font-normal"
-                                >
-                                    {date}
-                                </Typography>
-                            </td>
-                            <td className={classes}>
-                                <div className="w-max">
-                                    <Chip
-                                        size="sm"
-                                        variant="ghost"
-                                        value={status}
-                                        color={status === "paid" ? "green" : status === "pending" ? "amber" : "red"}
-                                    />
-                                </div>
-                            </td>
-                            <td className={classes}>
-                                <div className="flex items-center gap-3">
-                                    <div className="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-                                        <Avatar
-                                            src={account === "visa" ? "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png" : "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png"}
-                                            size="sm"
-                                            alt={account}
-                                            variant="square"
-                                            className="h-full w-full object-contain p-1"
-                                        />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal capitalize"
-                                        >
-                                            {account.split("-").join(" ")} {accountNumber}
-                                        </Typography>
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal opacity-70"
-                                        >
-                                            {expiry}
-                                        </Typography>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className={classes}>
-                                <Tooltip content="Edit User">
-                                    <IconButton variant="text">
-                                        <PencilIcon className="h-4 w-4"/>
-                                    </IconButton>
-                                </Tooltip>
-                            </td>
-                        </tr>);
-                    },)}
-                    </tbody>
-                </table>
-            </CardBody>
-
-            <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-                <Button variant="outlined" size="sm">
-                    Previous
-                </Button>
-                <div className="flex items-center gap-2">
-                    <IconButton variant="outlined" size="sm">
-                        1
-                    </IconButton>
-                    <IconButton variant="text" size="sm">
-                        2
-                    </IconButton>
-                    <IconButton variant="text" size="sm">
-                        3
-                    </IconButton>
-                    <IconButton variant="text" size="sm">
-                        ...
-                    </IconButton>
-                    <IconButton variant="text" size="sm">
-                        8
-                    </IconButton>
-                    <IconButton variant="text" size="sm">
-                        9
-                    </IconButton>
-                    <IconButton variant="text" size="sm">
-                        10
-                    </IconButton>
-                </div>
-                <Button variant="outlined" size="sm">
-                    Next
-                </Button>
-            </CardFooter>
-        </Card>)
+        <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+            <Button variant="outlined" size="sm">
+                Previous
+            </Button>
+            <div className="flex items-center gap-2">
+                <IconButton variant="outlined" size="sm">
+                    1
+                </IconButton>
+                <IconButton variant="text" size="sm">
+                    2
+                </IconButton>
+                <IconButton variant="text" size="sm">
+                    3
+                </IconButton>
+                <IconButton variant="text" size="sm">
+                    ...
+                </IconButton>
+                <IconButton variant="text" size="sm">
+                    8
+                </IconButton>
+                <IconButton variant="text" size="sm">
+                    9
+                </IconButton>
+                <IconButton variant="text" size="sm">
+                    10
+                </IconButton>
+            </div>
+            <Button variant="outlined" size="sm">
+                Next
+            </Button>
+        </CardFooter>
+    </Card>)
 }

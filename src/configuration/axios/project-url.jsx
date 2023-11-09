@@ -1,5 +1,5 @@
 /*BaseURL*/
-export const baseURL = "http://localhost:8091/jlos/";
+export const baseURL = "http://10.14.107.5:8091/jlos/";
 /*USER MANAGEMENT*/
 export const getAllUser = 'system-management/user/all'
 

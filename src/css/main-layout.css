@@ -2,6 +2,7 @@
     --color-blue: #25476a;
     --color-light: #ffffff;
     --color-light-gray: #edf1f6;
+    --color-light-gray-1: #fafafd;
 }
 
 .bg-blue {
@@ -35,6 +36,7 @@
     background-color: var(--color-light);
 }
 
+
 .menu-hover:hover {
     color: white;
     background-color: var(--color-blue);
@@ -48,6 +50,9 @@
 
 .bg-light-gray {
     background-color: var(--color-light-gray);
+}
+.bg-light-gray-1 {
+    background-color: var(--color-light-gray-1);
 }
 .m-menu {
     margin-left: 0;
