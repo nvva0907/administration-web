@@ -1,7 +1,7 @@
 import axios from "axios";
 import {contains} from "../../utils/DataUtils.jsx";
 
-const ERROR_CODES = ["401","403"]
+const ERROR_CODES = ["401", "403"]
 
 export const baseHeader = () => {
     return {
@@ -32,7 +32,24 @@ axios.interceptors.response.use(function (response) {
 })
 // BASE API
 export const get = async (url) => {
-    return axios({
-        method: "GET", url: url,
-    });
+    try {
+        return axios({
+            method: "GET", url: url,
+        });
+    } catch (error) {
+        console.error("Failed to GET data:", error);
+        throw error;
+    }
+}
+export const post = async (url, {obj}) => {
+    try {
+        return await axios({
+            method: "POST",
+            url: url,
+            data: obj ?? {},
+        });
+    } catch (error) {
+        console.error("Failed to POST data:", error);
+        throw error;
+    }
 }

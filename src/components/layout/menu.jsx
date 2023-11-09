@@ -1,6 +1,6 @@
 import "../../css/main-layout.css"
 import {Link, Route} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 export default function Menu() {
     const menuText= "flex text-sm font-bold color-blue h-8 items-center pl-2 menu-hover"
     const menuTextActive= "flex text-sm font-medium color-white bg-blue h-8 items-center pl-2 rounded-md"
@@ -37,7 +37,6 @@ export default function Menu() {
         }))
         setMenu(updatedMenu);
     }
-
     return (<>
         <div className="flex justify-center text-white h-7-100 items-center">
             ADMINISTRATION

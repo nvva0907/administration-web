@@ -1,13 +1,7 @@
 :root {
     --color-blue: #25476a;
-    --color-blue-1: #294d72;
-    --color-blue-2: #25476a;
     --color-light: #ffffff;
     --color-light-gray: #edf1f6;
-    --color-orange: #ff7a38;
-    --color-green: #0b9c4b;
-    --color-pink: #ffa9b3;
-    --menu-width: 250px;
 }
 
 .bg-blue {
@@ -16,6 +10,9 @@
 
 .color-blue {
     color: var(--color-blue);
+}
+.ring-blue{
+    --ring-color: var(--color-blue);
 }
 
 .color-white {
@@ -52,55 +49,36 @@
 .bg-light-gray {
     background-color: var(--color-light-gray);
 }
+.m-menu {
+    margin-left: 0;
+    animation-name: menuShow;
+    animation-duration: 0.5s;
+}
+.m-menu.hide {
+    margin-left: -250px;
+    animation-name: menuHide;
+    animation-duration: 0.5s;
+}
+@keyframes menuHide {
+    0% { margin-left: 0 }
+    100% { margin-left: -250px }
+}
+@keyframes menuShow {
+    0% { margin-left: -250px }
+    100% { margin-left: 0 }
+}
 
 /*RESPONSIVE*/
-@media screen and (min-resolution: 192dpi) {
-
-}
-
 @media screen and (min-resolution: 140dpi) {
-    .m-body-header {
-        margin-top: -210px;
-        animation-name: bodyHeaderHide;
-        animation-duration: 1s;
-        position: absolute;
-        border-bottom-left-radius: 1px;
-        border-bottom-right-radius: 1px;
-    }
-
-    @keyframes bodyHeaderHide {
-        0% {
-            margin-top: -100px;
-            opacity: 0.5;
-        }
-        100% {
-            margin-top: -210px;
-        }
-    }
     .m-menu {
         margin-left: -250px;
-        animation-name: menuHide;
+        animation-name: menuHide1;
         animation-duration: 0.5s;
     }
-
-    @keyframes menuHide {
-        0% {
-            margin-left: 0;
-        }
-        100% {
-            margin-left: -250px;
-        }
-    }
-    @keyframes menuShow {
-        0% {
-            margin-left: 0;
-        }
-        100% {
-            margin-left: -250px;
-        }
+    @keyframes menuHide1 {
+        0% { margin-left: 0 }
+        100% { margin-left: -250px }
     }
 }
-/*CSS SUPPORT*/
-
 
 

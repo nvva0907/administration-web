@@ -1,94 +1,45 @@
 import "./table.css"
 import {PencilIcon} from "@heroicons/react/24/solid";
 import {
-    ArrowDownTrayIcon, MagnifyingGlassIcon,
+    ArrowDownTrayIcon, ArrowUpTrayIcon,
 } from "@heroicons/react/24/outline";
 import {
     Card, CardHeader, Typography, Button, CardBody, Chip, CardFooter, Avatar, IconButton, Tooltip, Input,
 } from "@material-tailwind/react";
+import InputText from "../Form/input-text.jsx";
 
 const TABLE_HEAD = ["Transaction", "Amount", "Date", "Status", "Account", ""];
 
-const TABLE_ROWS = [{
-    img: "/img/logos/logo-spotify.svg",
-    name: "Spotify",
-    amount: "$2,500",
-    date: "Wed 3:00pm",
-    status: "paid",
-    account: "visa",
-    accountNumber: "1234",
-    expiry: "06/2026",
-}, {
-    img: "/img/logos/logo-amazon.svg",
-    name: "Amazon",
-    amount: "$5,000",
-    date: "Wed 1:00pm",
-    status: "paid",
-    account: "master-card",
-    accountNumber: "1234",
-    expiry: "06/2026",
-}, {
-    img: "/img/logos/logo-pinterest.svg",
-    name: "Pinterest",
-    amount: "$3,400",
-    date: "Mon 7:40pm",
-    status: "pending",
-    account: "master-card",
-    accountNumber: "1234",
-    expiry: "06/2026",
-}, {
-    img: "/img/logos/logo-google.svg",
-    name: "Google",
-    amount: "$1,000",
-    date: "Wed 5:00pm",
-    status: "paid",
-    account: "visa",
-    accountNumber: "1234",
-    expiry: "06/2026",
-}, {
-    img: "/img/logos/logo-netflix.svg",
-    name: "netflix",
-    amount: "$14,000",
-    date: "Wed 3:30am",
-    status: "cancelled",
-    account: "visa",
-    accountNumber: "1234",
-    expiry: "06/2026",
-},];
-export default function Table() {
-    return (<div className="table-container">
-        <Card className="h-full w-full">
+
+export default function Table(props) {
+    return (
+        <Card className="h-full w-full flex">
+
+
             <CardHeader floated={false} shadow={false}>
-                    <div className="flex w-full justify-between pl-5 pr-5 h-20 green-bg">
-                        <div className="w-full">
-                            <form>
-                                <div>
-                                    {/*flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md*/}
-                                    <div
-                                        className="">
-                                        <input
-                                            type="text"
-                                            name="username"
-                                            id="username"
-                                            autoComplete="username"
-                                            // className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                            placeholder="search"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
+                    <div className="flex w-full justify-between h-20">
+                        <div className="bg-blue-50 w-4/5 pl-5">
+                            <InputText></InputText>
                         </div>
-                        <div className="flex">
-                            <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4"/>
-                            <b>Download</b>
+                        <div className="flex justify-end w-1/5 bg-blue-50 items-center gap-4 text-sm pr-5">
+                            <div className="flex items-center gap-2 cursor-pointer">
+                                <ArrowUpTrayIcon strokeWidth={2} className="h-4 w-4"/>
+                                <b>Upload</b>
+                            </div>
+                            <div className="flex items-center gap-2 cursor-pointer">
+                                <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4"/>
+                                <b>Export</b>
+                            </div>
                         </div>
                     </div>
             </CardHeader>
-            <CardBody className="overflow-scroll px-0">
-                <table className="w-full min-w-max table-auto text-left">
+
+
+            <CardBody className="">
+                <table className="w-full min-w-max table-auto text-left overflow-scroll">
                     <thead>
                     <tr>
-                        {TABLE_HEAD.map((head) => (<th
+                        {props.header.map((head) => (<th
                             key={head}
                             className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
                         >
@@ -103,10 +54,10 @@ export default function Table() {
                     </tr>
                     </thead>
                     <tbody>
-                    {TABLE_ROWS.map(({
+                    {props.data.map(({
                                          img, name, amount, date, status, account, accountNumber, expiry,
                                      }, index,) => {
-                        const isLast = index === TABLE_ROWS.length - 1;
+                        const isLast = index === props.data.length - 1;
                         const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
                         return (<tr key={name}>
@@ -196,6 +147,7 @@ export default function Table() {
                     </tbody>
                 </table>
             </CardBody>
+
             <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
                 <Button variant="outlined" size="sm">
                     Previous
@@ -227,6 +179,5 @@ export default function Table() {
                     Next
                 </Button>
             </CardFooter>
-        </Card>
-    </div>)
+        </Card>)
 }

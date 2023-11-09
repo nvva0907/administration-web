@@ -1,15 +1,17 @@
 import "../../css/main-layout.css"
 import {Bars3Icon, ArrowRightOnRectangleIcon} from '@heroicons/react/20/solid'
 
-export default function Header(props) {
+export default function Header() {
     const handleClick = () => {
        let menu = document.body.querySelector(`.m-menu`);
-        if (menu.classList.contains("hidden")) {
-            menu.classList.remove("hidden");
+        if (menu.classList.contains("hide")) {
+
+            menu.classList.remove("hide");
             menu.classList.add("show");
         } else {
+
             menu.classList.remove("show");
-            menu.classList.add("hidden");
+            menu.classList.add("hide");
         }
     };
 
