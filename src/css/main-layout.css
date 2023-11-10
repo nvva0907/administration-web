@@ -3,6 +3,7 @@
     --color-light: #ffffff;
     --color-light-gray: #edf1f6;
     --color-light-gray-1: #fafafd;
+    --color-gray: #c5c5c5;
 }
 
 .bg-blue {
@@ -12,7 +13,8 @@
 .color-blue {
     color: var(--color-blue);
 }
-.ring-blue{
+
+.ring-blue {
     --ring-color: var(--color-blue);
 }
 
@@ -51,39 +53,76 @@
 .bg-light-gray {
     background-color: var(--color-light-gray);
 }
+
 .bg-light-gray-1 {
     background-color: var(--color-light-gray-1);
 }
+
 .m-menu {
     margin-left: 0;
     animation-name: menuShow;
     animation-duration: 0.5s;
 }
+
 .m-menu.hide {
     margin-left: -250px;
     animation-name: menuHide;
     animation-duration: 0.5s;
 }
+
 @keyframes menuHide {
-    0% { margin-left: 0 }
-    100% { margin-left: -250px }
+    0% {
+        margin-left: 0
+    }
+    100% {
+        margin-left: -250px
+    }
 }
+
 @keyframes menuShow {
-    0% { margin-left: -250px }
-    100% { margin-left: 0 }
+    0% {
+        margin-left: -250px
+    }
+    100% {
+        margin-left: 0
+    }
 }
 
 /*RESPONSIVE*/
 @media screen and (min-resolution: 140dpi) {
+    .content-header {
+        margin-top: -200px;
+        animation-name: contentHeaderHide;
+        animation-duration: 0.5s;
+    }
+
+    @keyframes contentHeaderHide {
+        0% {
+            margin-top: 0
+        }
+        100% {
+            margin-top: -200px
+        }
+    }
+
     .m-menu {
         margin-left: -250px;
         animation-name: menuHide1;
         animation-duration: 0.5s;
     }
+
     @keyframes menuHide1 {
-        0% { margin-left: 0 }
-        100% { margin-left: -250px }
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: -250px
+        }
     }
 }
 
-
+.sticky-t {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}

@@ -37,8 +37,8 @@ export default function Menu() {
         }))
         setMenu(updatedMenu);
     }
-    return (<>
-        <div className="flex justify-center text-white h-7-100 items-center">
+    return (<div className="h-screen m-menu">
+        <div className="flex justify-center text-white h-7-100 items-center bg-blue">
             ADMINISTRATION
         </div>
         <div className="flex flex-col w-250 gap-3 h-93-100 pl-5 pr-5 box-border bg-light rounded-t-xl">
@@ -54,5 +54,5 @@ export default function Menu() {
                 </Link>
             ))}
         </div>
-    </>)
+    </div>)
 }

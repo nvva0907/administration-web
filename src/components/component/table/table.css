@@ -1,0 +1,11 @@
+.border-solid-1px{
+    border: solid 1px var(--color-gray);
+}
+
+.border-r-solid-1px{
+    border-right: solid 1px var(--color-blue);
+}
+
+.border-bottom-table{
+    border-bottom: solid 1px var(--color-gray);
+}

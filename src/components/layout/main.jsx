@@ -8,29 +8,23 @@ import Function from "../page/SystemFunction/function.jsx";
 import Province from "../page/Province/province.jsx";
 
 function MainLayout() {
-    const routerList = [
-        {path: "/user", component: <User/>},
-        {path: "/dashboard", component: <Dashboard/>},
-        {path: "/", component: <Dashboard/>},
-        {path: "/function", component: <Function/>},
-        {path: "/province", component: <Province/>}
-    ]
+    const routerList = [{path: "/user", component: <User/>}, {path: "/dashboard", component: <Dashboard/>}, {
+        path: "/",
+        component: <Dashboard/>
+    }, {path: "/function", component: <Function/>}, {path: "/province", component: <Province/>}]
 
-    return (<div className="flex text-black">
-        <div className="h-screen bg-blue m-menu">
+    return (
+        <div className="flex">
             <Menu></Menu>
-        </div>
-        <div className="w-full h-screen ml-250">
-            <div className="flex bg-blue color-white font-medium h-7-100">
+            <div className="w-full">
                 <Header></Header>
+                <div>
+                    <Routes>
+                        {routerList.map(item => (<Route path={item.path} element={item.component}></Route>))}
+                    </Routes>
+                </div>
             </div>
-            <div>
-                <Routes>
-                    {routerList.map(item => (<Route path={item.path} element={item.component}></Route>))}
-                </Routes>
-            </div>
-        </div>
-    </div>)
+        </div>)
 }
 
 export default MainLayout;

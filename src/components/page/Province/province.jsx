@@ -4,39 +4,40 @@ import {getListProvinces} from "./province-api.jsx";
 import Table from "../../component/table/table.jsx";
 
 export default function Province() {
-    const [data,setData] = useState([]);
+    const [dataProvince, setDataProvince] = useState([]);
 
-    const getAllProvince = async ()=>{
-        const response = await getListProvinces(5, 5, null);
-        setData(response?.data?.pageData);
+    const getAllProvince = async () => {
+        const response = await getListProvinces(5, 10, null);
+        setDataProvince(response?.data?.pageData);
     }
     useEffect(() => {
         getAllProvince();
     }, []);
 
-    const TABLE_HEAD = [
+    const tableHeader = [
         {
-            label : "STT",
-            field: "key"
+            label: "STT",
+            field: "key",
+
         },
         {
-            label : "Mã tỉnh thành",
+            label: "Mã tỉnh thành",
             field: "codeName"
         },
         {
-            label : "Tên tỉnh thành",
+            label: "Tên tỉnh thành",
             field: "fullName"
         },
         {
-            label : "Tên tiếng anh",
+            label: "Tên tiếng anh",
             field: "fullNameEn"
         },
         {
-            label : "Trạng thái",
+            label: "Trạng thái",
             field: "status"
         },
         {
-            label : "",
+            label: "",
             field: ""
         }
     ];
@@ -44,9 +45,7 @@ export default function Province() {
     return (
         <>
             <ContentHeader label="Tỉnh thành" scr="Danh sách tỉnh thành"></ContentHeader>
-            <div className="flex color-blue font-medium bg-light-gray w-full h-full justify-center items-center">
-                <Table header={TABLE_HEAD} data={data}></Table>
-            </div>
+            <Table header={tableHeader} data={dataProvince}/>
         </>
     )
 }
