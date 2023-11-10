@@ -1,21 +1,19 @@
 import ReactPaginate from "react-paginate";
 import "./table.css"
 
-export default function Pagination({currentPage, itemPerPage, totalItem, onChangePage}) {
+export default function Pagination({currentPage, itemPerPage, totalItem, onChangePage, totalPage}) {
     if (currentPage > 1 && (totalItem === 0 || (Math.floor(totalItem / itemPerPage) + (totalItem % itemPerPage === 0 ? 0 : 1)) < currentPage)) {
         onChangePage(1, itemPerPage);
         return <div></div>;
     }
     return (
-        <div className="flex justify-between items-center p-2">
+        <div className="flex justify-between items-center p-1 mt-10">
             <div>
                 <p className="text-sm text-gray-700">
-                    Showing <span className="font-medium">{currentPage}</span> to <span
-                    className="font-medium">10</span> of{' '}
-                    <span className="font-medium">{988}</span> results
+                    Hiển thị {itemPerPage * (currentPage - 1) + 1}-{((itemPerPage * (currentPage - 1) + itemPerPage) > totalItem) ? totalItem : (itemPerPage * (currentPage - 1) + itemPerPage)} trong tổng số {totalItem} bản ghi
                 </p>
             </div>
-            <div className="rounded bg-light-gray text-blue-950 p-2 border-solid-1px">
+            <div className="rounded text-blue-950 border-solid-1px text-sm">
                 <ReactPaginate
                     breakLabel="..."
                     nextLabel="Next"
@@ -25,14 +23,15 @@ export default function Pagination({currentPage, itemPerPage, totalItem, onChang
                     forcePage={currentPage - 1}
                     pageCount={Math.ceil(totalItem / itemPerPage)}
                     previousLabel="Previous"
-                    containerClassName="flex gap-5"
-                    pageClassName=""
-                    pageLinkClassName=""
-                    previousClassName=""
-                    previousLinkClassName=""
-                    nextClassName=""
-                    nextLinkClassName=""
-                    activeClassName=""
+                    containerClassName="flex justify-center items-center"
+                    // pageClassName=""
+                    pageLinkClassName="w-9 h-9 text-center flex justify-center items-center border-r-solid-1px"
+                    // previousClassName=""
+                    previousLinkClassName="flex justify-center items-center p-2 border-r-solid-1px"
+                    // nextClassName=""
+                    nextLinkClassName="flex justify-center items-center p-2"
+                    activeClassName="bg-blue text-white"
+                    breakLinkClassName="w-9 h-9 text-center flex justify-center items-center border-r-solid-1px"
                     hrefBuilder={(page, pageCount, selected) =>
                         page >= 1 && page <= pageCount ? `/page/${page}` : '#'
                     }

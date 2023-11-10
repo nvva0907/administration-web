@@ -4,12 +4,15 @@
     --color-light-gray: #edf1f6;
     --color-light-gray-1: #fafafd;
     --color-gray: #c5c5c5;
+    --color-gray-1: #f9fdfd;
 }
 
 .bg-blue {
     background-color: var(--color-blue);
 }
-
+.bg-gray {
+    background-color: var(--color-gray-1);
+}
 .color-blue {
     color: var(--color-blue);
 }
@@ -85,6 +88,19 @@
     }
     100% {
         margin-left: 0
+    }
+}
+.content-header{
+    margin-top: 0;
+    animation-name: contentHeaderShow;
+    animation-duration: 0.5s;
+}
+@keyframes contentHeaderShow {
+    0% {
+        margin-top: -200px
+    }
+    100% {
+        margin-top: 0
     }
 }
 

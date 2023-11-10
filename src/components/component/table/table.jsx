@@ -1,15 +1,15 @@
 import {
-    ArrowDownTrayIcon, ArrowUpTrayIcon,
-} from "@heroicons/react/24/outline";
+    PencilSquareIcon, ArrowDownTrayIcon, ArrowUpTrayIcon
+} from "@heroicons/react/20/solid";
 import {
-    Card, CardHeader, Typography, Button, CardBody, CardFooter, IconButton, Tooltip,
+    Card, CardHeader, Typography, CardBody, IconButton,
 } from "@material-tailwind/react";
 import InputText from "../form/input-text.jsx";
 import Status from "../form/status.jsx";
 import Pagination from "./pagination.jsx";
 
 
-export default function Table({header = [], data = []}) {
+export default function Table({header = [], data = [], paging ={}}) {
 
     return (
         <div className="flex color-blue font-medium w-full h-full justify-center items-center">
@@ -41,8 +41,8 @@ export default function Table({header = [], data = []}) {
                                     className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 pl-0 bg-light-gray border-bottom-table">
                                     <Typography
                                         variant="small"
-                                        color="blue-gray"
-                                        className="font-normal leading-none opacity-70"
+                                        color="black"
+                                        className="font-extrabold opacity-80"
                                     >
                                         {head?.label}
                                     </Typography>
@@ -54,7 +54,7 @@ export default function Table({header = [], data = []}) {
                         {data.map((record, recordIndex) => (
                             <tr className="border-bottom-table" key={recordIndex}>
                                 {header.map((head, headerIndex) => (
-                                    <td className="p-3 border-b border-blue-gray-50 flex-row text-start pl-0"
+                                    <td className="p-1 border-b border-blue-gray-50 flex-row text-start pl-0"
                                         key={headerIndex}>
                                         <Typography
                                             variant="small"
@@ -65,7 +65,7 @@ export default function Table({header = [], data = []}) {
                                                 (() => {
                                                     if (head?.field) {
                                                         if (head?.field === "key") {
-                                                            return recordIndex + 1;
+                                                            return paging.pageSize * (paging.pageNum - 1) + recordIndex + 1;
                                                         }
                                                         if (head?.field === "status") {
                                                             if (record[head.field]) {
@@ -73,9 +73,18 @@ export default function Table({header = [], data = []}) {
                                                             } else {
                                                                 return <Status status={0}></Status>
                                                             }
-                                                        } else if (head.field === "") {
-                                                            return '';
+                                                        } else if (head.field === "action") {
+                                                            return <IconButton variant="text">
+                                                                <PencilSquareIcon className="h-4 w-4"/>
+                                                            </IconButton>;
                                                         } else {
+                                                            if(head.type === "object"){
+                                                                if(record[head.objField] != null) {
+                                                                    if(record[head.objField][head.field] != null) {
+                                                                        return record[head.objField][head.field]
+                                                                    }
+                                                                }
+                                                            }
                                                             return record[head.field] || '';
                                                         }
                                                     } else {
@@ -87,19 +96,11 @@ export default function Table({header = [], data = []}) {
                                     </td>
 
                                 ))}
-                                {/*<td className="p-2 border-b border-blue-gray-50">*/}
-                                {/*    <Tooltip content="Edit User">*/}
-                                {/*        <IconButton variant="text">*/}
-                                {/*            <PencilIcon className="h-4 w-4"/>*/}
-                                {/*        </IconButton>*/}
-                                {/*    </Tooltip>*/}
-                                {/*</td>*/}
                             </tr>
                         ))}
                         </tbody>
                     </table>
                 </CardBody>
-                <Pagination totalPage={18} currentPage={2} totalItem={197} itemPerPage={10}></Pagination>
             </Card>
         </div>)
 }

@@ -3,7 +3,7 @@
 }
 
 .border-r-solid-1px{
-    border-right: solid 1px var(--color-blue);
+    border-right: solid 1px var(--color-gray);
 }
 
 .border-bottom-table{
