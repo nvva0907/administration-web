@@ -50,7 +50,7 @@ export default function Province() {
         <>
             <ContentHeader label="Tỉnh thành" scr="Danh sách tỉnh thành"></ContentHeader>
             <Table header={tableHeader} data={dataProvince.pageData} paging={pageDetails} />
-            <Pagination
+            {dataProvince.pageData && <Pagination
                 currentPage={pageDetails.pageNum}
                 totalItem={dataProvince.total}
                 itemPerPage={10}
@@ -60,6 +60,7 @@ export default function Province() {
                     }
                 }}
             />
+            }
         </>
     )
 }
