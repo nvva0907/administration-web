@@ -68,19 +68,22 @@ export default function User() {
         }
     ];
 
-    return (<>
-        <ContentHeader label="Người dùng hệ thống" scr="Quản lý người dùng"></ContentHeader>
-        <Table header={tableHeader} data={dataUser.content} paging={pageDetails}/>
-        {dataUser.content && <Pagination
-            currentPage={pageDetails.pageNum}
-            totalItem={dataUser.totalElements}
-            itemPerPage={10}
-            onChangePage={(page, size) => {
-                if (pageDetails.pageNum !== page || pageDetails.pageSize !== size) {
-                    setPageDetails({pageNum: page, pageSize: size});
-                }
-            }}
-        />
-        }
-    </>)
+    return (
+        <>
+            <ContentHeader label="Người dùng hệ thống" scr="Quản lý người dùng"></ContentHeader>
+            <Table header={tableHeader} data={dataUser.content} paging={pageDetails}/>
+            {dataUser.content && <Pagination
+                currentPage={pageDetails.pageNum}
+                totalItem={dataUser.totalElements}
+                itemPerPage={10}
+                onChangePage={(page, size) => {
+                    if (pageDetails.pageNum !== page || pageDetails.pageSize !== size) {
+                        setPageDetails({pageNum: page, pageSize: size});
+                    }
+                }}
+            />
+            }
+        </>
+
+    )
 }

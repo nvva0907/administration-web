@@ -14,16 +14,19 @@ export default function Header() {
             menu.classList.add("hide");
         }
     };
-
     return (
-        <div className="flex bg-blue color-white font-medium h-7-100">
-            <div className="flex items-center w-full h-7-100 justify-between sticky-t bg-blue">
-                <div style={{marginLeft: "20px"}} onClick={handleClick}><Bars3Icon width={24}
-                                                                                   style={{cursor: "pointer"}}/>
+        <div className="bg-blue color-white grid grid-cols-6 items-center pl-2 pr-2 h-full">
+            <div className="col-start-1">
+                <div onClick={handleClick}>
+                    <Bars3Icon width={24} style={{cursor: "pointer"}}/>
                 </div>
-                <div style={{marginRight: "20px"}}>
+            </div>
+
+            <div className="col-start-6 flex justify-end">
+                <div>
                     <ArrowRightOnRectangleIcon width={24} style={{cursor: "pointer"}}/>
                 </div>
             </div>
-        </div>)
+        </div>
+    )
 }

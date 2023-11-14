@@ -7,7 +7,7 @@ export default function Pagination({currentPage, itemPerPage, totalItem, onChang
         return <div></div>;
     }
     return (
-        <div className="flex justify-between items-center p-1 mt-10">
+        <div className="flex justify-between items-center row-span-1 pl-5 pr-5">
             <div>
                 <p className="text-sm text-gray-700">
                     Hiển thị {itemPerPage * (currentPage - 1) + 1}-{((itemPerPage * (currentPage - 1) + itemPerPage) > totalItem) ? totalItem : (itemPerPage * (currentPage - 1) + itemPerPage)} trong tổng số {totalItem} bản ghi

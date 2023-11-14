@@ -13,5 +13,22 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/main.jsx"></script>
+<script>
+    document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.code === 'KeyB') {
+            let menu = document.body.querySelector(`.m-menu`);
+            if (menu.classList.contains("hide")) {
+
+                menu.classList.remove("hide");
+                menu.classList.add("show");
+            } else {
+
+                menu.classList.remove("show");
+                menu.classList.add("hide");
+            }
+            event.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
